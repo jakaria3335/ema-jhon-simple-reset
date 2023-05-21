@@ -1,11 +1,19 @@
+import './Product.css';
 const Product = (props) => {
 	console.log(props.product);
-	const {img,name,price}=props.product
+	const { img, name, price, ratings, seller } = props.product;
 	return (
-		<div>
+		<div className="product">
 			<img src={img} alt="" />
-			<h4>{name}</h4>
-			<h4>{price}</h4>
+			<div className="product-info">
+				<h6 className="product-name">{name}</h6>
+				<p className="product-price">Price: ${price}</p>
+				<div className="seller-info">
+					<p>Manufacturer: {seller}</p>
+					<p>Rating: {ratings} Star</p>
+				</div>
+			</div>
+			<button className="btn-cart">Add to cart</button>
 		</div>
 	);
 };
