@@ -1,26 +1,38 @@
-import { useEffect, useState } from "react";
-import "./Shop.css"
-import Product from "../Product/Product";
+import { useEffect, useState } from 'react';
+import './Shop.css';
+import Product from '../Product/Product';
+import Cart from '../Cart/Cart';
 const Shop = () => {
-    const [products, setProducts] = useState([])
-    useEffect(() => {
-      fetch("products.json")
-      .then(res=>res.json())
-      .then(data => setProducts(data))
-    }, [])
-    
-    return (
-        <div className="shop-container">
-            <div className="products-container">
-                {
-                    products.map(product=><Product key={product.id} product={product}></Product>)
-                }
-            </div>
-            <div className="cart-container">
-                <h4>Order Summary</h4>
-            </div>
-        </div>
-    );
+	const [products, setProducts] = useState([]);
+	useEffect(() => {
+		fetch('products.json')
+			.then((res) => res.json())
+			.then((data) => setProducts(data));
+	}, []);
+	///////Product Component Work Start///////
+	const [cart, setCart] = useState([]);
+	const handleAddToCart = (product) => {
+		const newCart = [...cart, product];
+		setCart(newCart);
+	};
+	///////Product Component Work End///////
+
+	return (
+		<div className="shop-container">
+			<div className="products-container">
+				{products.map((product) => (
+					<Product
+						key={product.id}
+						product={product}
+						handleAddToCart={handleAddToCart}
+					></Product>
+				))}
+			</div>
+			<div className="cart-container">
+				<Cart cart={cart}></Cart>
+			</div>
+		</div>
+	);
 };
 
 export default Shop;
