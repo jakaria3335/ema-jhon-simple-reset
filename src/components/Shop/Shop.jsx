@@ -14,9 +14,9 @@ const Shop = () => {
 	const [cart, setCart] = useState([]);
 
 	const handleAddToCart = (product) => {
-		const newCart = [...cart, product];
+		// const newCart = [...cart, product];
 		///////Optional Functions for update quantity:
-		let newCrt = [];
+		let newCart = [];
 		const exists = cart.find((pd) => pd.id === product.id);
 		if (!exists) {
 			product.quantity = 1;
