@@ -1,3 +1,9 @@
 .review-container{
-    margin: auto auto;
+    margin: 20px auto;
+}
+.right-icon{
+    margin-left: 10px;
+}
+.add-icon{
+    margin-left: 5px;
 }
